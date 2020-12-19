@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
 
 /**
  * Ui component for user interaction.
@@ -11,33 +10,21 @@ import { Button } from 'reactstrap';
 const Btn = (props) => {
   const { label, children } = props;
   return (
-    <Button type="button" color={props.color || 'primary'} {...props}>
+    <button type="button" {...props}>
       {label ? label : children}
-    </Button>
+    </button>
   );
 };
 
 export default Btn;
 
-Button.propTypes = {
+Btn.propTypes = {
   active: PropTypes.bool,
   'aria-label': PropTypes.string,
   block: PropTypes.bool,
   color: PropTypes.string,
   disabled: PropTypes.bool,
   outline: PropTypes.bool,
-  tag: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-    PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
-    PropTypes.arrayOf(
-      PropTypes.oneOfType([
-        PropTypes.func,
-        PropTypes.string,
-        PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
-      ])
-    ),
-  ]),
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   onClick: PropTypes.func,
   size: PropTypes.string,
@@ -47,7 +34,7 @@ Button.propTypes = {
   close: PropTypes.bool,
 };
 
-Button.defaultProps = {
+Btn.defaultProps = {
   color: 'secondary',
   tag: 'button',
 };
