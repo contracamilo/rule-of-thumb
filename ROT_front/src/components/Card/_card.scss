@@ -6,6 +6,15 @@
   overflow: hidden;
   color: $white;
 
+  @include respond(tablet) {
+    height: 520px;
+  }
+
+  @include respond(mobile) {
+    width: 100%;
+    margin-top: 30px;
+  }
+
   &__img-box {
     margin: 0;
     padding: 0;
@@ -16,6 +25,16 @@
     img {
       width: 100%;
       transition: 0.3s;
+
+      @include respond(mobile) {
+        width: 70%;
+        transform: translateX(-50px);
+      }
+
+      @include respond(tablet) {
+        width: auto;
+        transform: translateX(-50px);
+      }
     }
 
     figcaption {
@@ -87,6 +106,10 @@
 
     strong {
       font-size: $x-small;
+    }
+
+    @include respond(mobile) {
+      padding: $upper-mg $side-mg $upper-mg $upper-mg;
     }
   }
 

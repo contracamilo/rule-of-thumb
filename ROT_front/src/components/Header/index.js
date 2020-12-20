@@ -20,6 +20,7 @@ const Header = ({ title, label, navItems }) => {
         <Nav aria={label} items={navItems} />
         <Search />
       </div>
+      <div className="header__mobile-menu">MENU</div>
     </header>
   );
 };

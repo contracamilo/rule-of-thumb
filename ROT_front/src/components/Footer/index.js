@@ -4,6 +4,12 @@ import Nav from '../Nav';
 import fbLogo from '../../assets/images/fb.png';
 import twLogo from '../../assets/images/tw.png';
 
+/**
+ * Ui component for user interaction.
+ *
+ * @param {object} props passed properties, check prop-types for details.
+ * @return {JSX} Footer component to be placed at the end of a page
+ */
 const Footer = ({ label, navItems, text }) => {
   return (
     <footer className="footer ">
@@ -31,6 +37,16 @@ const Footer = ({ label, navItems, text }) => {
   );
 };
 
-Footer.propTypes = {};
-
 export default Footer;
+
+Footer.propTypes = {
+  label: PropTypes.string,
+  navItems: PropTypes.array,
+  text: PropTypes.string,
+};
+
+Footer.defaultProps = {
+  label: '',
+  navItems: [],
+  text: '',
+};

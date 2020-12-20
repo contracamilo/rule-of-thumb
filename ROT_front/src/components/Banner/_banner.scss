@@ -8,6 +8,11 @@
   margin: 33px 0;
   padding: 0 $side-mg;
   height: 100px;
+  position: relative;
+
+  @include respond(tablet) {
+    display: none;
+  }
 
   h2 {
     font-size: 30px;
@@ -15,6 +20,10 @@
       display: block;
       font-size: 1.1rem;
       font-weight: 300;
+    }
+
+    @include respond(mobile) {
+      font-size: 20px;
     }
   }
 
@@ -31,6 +40,10 @@
 
   &__text {
     font-weight: 300;
+
+    @include respond(mobile) {
+      display: none;
+    }
   }
 
   &__button {
@@ -62,6 +75,11 @@
       &:active,
       &:visited {
         border: 2px solid $gray;
+      }
+
+      @include respond(mobile) {
+        padding: 0 0.5rem;
+        width: 8rem;
       }
     }
   }

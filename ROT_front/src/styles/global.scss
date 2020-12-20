@@ -69,4 +69,16 @@ p {
 .container {
   width: 87%;
   margin: 0 auto;
+
+  @include respond(big) {
+    width: 68%;
+  }
+
+  @include respond(tablet) {
+    width: 95%;
+  }
+
+  @include respond(mobile) {
+    width: 92%;
+  }
 }

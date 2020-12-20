@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import { useIsHealthyAPI } from '../hooks/useIsHealthyAPI';
+import { usePersonsAPI } from '../hooks/usePersonsAPI';
 
 // A New instance of React.createContext
 export const ProductContext = createContext();
@@ -11,7 +11,7 @@ export const ProductContext = createContext();
  * @returns {JSX.Elements} New setup for the Provider component
  */
 const Provider = ({ children }) => {
-  const [{ data, isLoading, isError }, doFetch] = useIsHealthyAPI('item');
+  const [{ data, isLoading, isError }, doFetch] = usePersonsAPI('item');
 
   const value = {
     data,

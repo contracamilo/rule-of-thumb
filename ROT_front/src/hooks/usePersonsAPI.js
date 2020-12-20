@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'development') {
   apiUrl = process.env.REACT_APP_PROD_API_URL;
 }
 
-export const useIsHealthyAPI = (route) => {
+export const usePersonsAPI = (route) => {
   const [data, setData] = useState({ data: [] });
   const [url, setUrl] = useState(`${apiUrl}${route}`);
   const [isLoading, setIsLoading] = useState(false);

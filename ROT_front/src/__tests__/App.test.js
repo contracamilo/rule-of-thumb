@@ -1,10 +1,11 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import Context from '../context/authContext';
-import ProductContext from '../context/productContext';
+import ProductContext from '../context/authContext';
+import PropTypes from 'prop-types';
 import App from '../App';
 
-describe('<App />', () => {
+describe('<App /> redern without problems', () => {
   afterEach(cleanup);
 
   const app = render(

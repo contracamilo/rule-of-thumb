@@ -7,6 +7,14 @@
   button {
     height: 81px;
     cursor: pointer;
+
+    @include respond(tablet) {
+      height: 51px;
+    }
+
+    @include respond(mobile) {
+      height: 51px;
+    }
   }
 
   &--green {

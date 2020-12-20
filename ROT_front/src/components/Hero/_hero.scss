@@ -3,6 +3,10 @@
   position: relative;
   z-index: 0;
   margin-bottom: 33px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
   &:after {
     @include pseudo($top: 0, $left: 0, $z: -1);
     width: 100%;
@@ -10,5 +14,15 @@
     opacity: 0.85;
     pointer-events: none;
     background: linear-gradient($gray, rgba(0, 0, 0, 0));
+  }
+
+  @include respond(tablet) {
+    background-size: 100%;
+  }
+
+  @include respond(mobile) {
+    width: 100%;
+    background-size: contain;
+    margin-bottom: 0;
   }
 }

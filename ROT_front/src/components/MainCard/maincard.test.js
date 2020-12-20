@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import Btn from '../../components/Button';
+import MainCard from './index';
 
-describe('Button component tests', () => {
+describe('<MainCard /> render without crah', () => {
   test('render without crash', () => {
-    const main = render(<Btn />);
+    const main = render(<MainCard />);
     expect(main).toBeTruthy();
   });
 });

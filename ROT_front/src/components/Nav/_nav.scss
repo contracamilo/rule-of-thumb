@@ -3,13 +3,19 @@
 
   &__list {
     display: flex;
+
+    @include respond(mobile) {
+      justify-content: space-evenly;
+      align-items: center;
+      align-content: center;
+    }
   }
 
   &__search {
     cursor: pointer;
     padding-left: 48px;
     svg {
-      height: 36px;
+      height: 28px;
       fill: white;
     }
   }
