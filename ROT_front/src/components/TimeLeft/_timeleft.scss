@@ -1,0 +1,44 @@
+.timeleft {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  margin-top: 70px;
+  &__text {
+    width: 50%;
+    background-color: rgba($gray, 0.4);
+    color: $white;
+    display: flex;
+    justify-content: flex-end;
+    font-size: $small;
+    font-weight: 300;
+    padding: 0 1rem;
+    height: 50px;
+    position: relative;
+    &:after {
+      @include pseudo($right: -16px, $top: calc(50% - 8px));
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-left: 8px solid rgba($gray, 0.4);
+    }
+  }
+  &__date {
+    width: 50%;
+    background-color: rgba($light-gray, 0.7);
+    font-size: 1.8rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 50px;
+    p {
+      margin: 0;
+      display: inline;
+      font-weight: 300;
+      font-size: 2rem;
+    }
+    strong {
+      font-size: 2rem;
+    }
+  }
+}

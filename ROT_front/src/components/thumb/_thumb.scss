@@ -1,0 +1,25 @@
+.thumb {
+  svg {
+    fill: $white;
+    width: 2rem;
+  }
+
+  button {
+    height: 81px;
+    cursor: pointer;
+  }
+
+  &--green {
+    button {
+      background-color: rgba($green, 0.9);
+      filter: contrast(120%);
+    }
+  }
+
+  &--orange {
+    button {
+      background-color: rgba($yellow, 0.9);
+      filter: contrast(100%);
+    }
+  }
+}

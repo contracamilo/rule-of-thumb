@@ -1,25 +1,37 @@
 import React from 'react';
-import Thumb from '../thumb';
 import ProgressBar from '../ProgressBar';
+import Thumb from '../thumb';
 
-const Card = ({ title, time, category, body, url, linkText, question }) => {
+const Card = ({ person }) => {
+  const { imgUrl, name, description, liked, time, category } = person;
+
   return (
     <section className="card">
-      <div className="card__text">
-        <h2>{title || null}</h2>
-        <p>
-          <strong>{time}</strong>
-          {`in ${category}`}
-        </p>
-        <p>{body}</p>
-      </div>
-      <div className="card__buttons">
-        <Thumb like />
-        <Thumb color="orange" like={false} />
-        <button>Vote Now</button>
-      </div>
-      <div className="card__buttons">
-        <ProgressBar />
+      <figure className="card__img-box">
+        <img src={imgUrl} alt={name} />
+        <figcaption>{description}</figcaption>
+      </figure>
+
+      <div className="card__content-box">
+        <div className="card__text">
+          <h2 className={liked ? 'green-badge' : 'orange-badge'}>{name || null}</h2>
+          <p className="card__text--small-sub">
+            <strong>{time}</strong>
+            {` in ${category}`}
+          </p>
+          <p>{description}</p>
+          <div className="card__vote-buttons">
+            <Thumb like />
+            <Thumb color="orange" like={false} />
+            <button type="button" className="card__vote-buttons--outline">
+              Vote Now
+            </button>
+          </div>
+        </div>
+
+        <div className="card__buttons">
+          <ProgressBar likePercentage={70} dislikePercentage={40} />
+        </div>
       </div>
     </section>
   );

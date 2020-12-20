@@ -4,11 +4,11 @@ import Thumb from '../thumb';
 const MainCard = ({ preTitle, title, body, url, linkText, question }) => {
   return (
     <section className="main-card">
-      <div className="main-card__text">
-        <h2>
+      <div className="main-card__inner">
+        <h1>
           <span>{preTitle || null}</span>
           {title || null}
-        </h2>
+        </h1>
         <p>{body}</p>
         <a href={url}>{linkText || null}</a>
         <h3>{question}</h3>

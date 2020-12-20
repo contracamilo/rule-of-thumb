@@ -1,0 +1,85 @@
+// mediqueries mixin
+
+@mixin respond($breakpoint) {
+  @if $breakpoint==desktop {
+    @media only screen and (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==tablet {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }
+}
+
+@mixin pseudo(
+  $display: block,
+  $pos: absolute,
+  $content: '',
+  $z: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false
+) {
+  content: $content;
+  display: $display;
+  position: $pos;
+  @if $top {
+    top: $top;
+  }
+  @if $right {
+    right: $right;
+  }
+  @if $bottom {
+    bottom: $bottom;
+  }
+  @if $left {
+    left: $left;
+  }
+  @if $z {
+    z-index: $z;
+  }
+}
+
+@mixin itemDecoration($color: white) {
+  &:before {
+    @include pseudo($left: 0, $bottom: -2px);
+    width: 0%;
+    height: 1px;
+    background-color: $color;
+    transition: 0.3s;
+    opacity: 0;
+  }
+  &:hover {
+    &:before {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+}
+
+@mixin buttonDecoration($color: white, $txtColor: $gray) {
+  &:after {
+    @include pseudo($left: 0, $top: 0, $z: -1);
+    width: 0%;
+    height: 100%;
+    background-color: $color;
+    transition: 0.3s;
+  }
+
+  &:hover {
+    color: $txtColor;
+    &:after {
+      width: 100%;
+    }
+  }
+}

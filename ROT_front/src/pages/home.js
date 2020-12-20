@@ -7,26 +7,32 @@ import TimeLeft from '../components/TimeLeft';
 import Footer from '../components/Footer';
 import Banner from '../components/Banner';
 import Votes from '../components/Votes';
+import BgImage from '../assets/images/Pope.jpg';
 
-const { header, hero, time, footer, banner1, banner2 } = texts;
+import { people } from '../utils/people';
 
 function home() {
+  const { header, hero, time, footer, banner1, banner2 } = texts;
+
   return (
-    <div className="container">
-      <Header {...header} />
-      <main className="home">
-        <Hero>
+    <div className="home">
+      <Hero imageUrl={BgImage}>
+        <div className="container">
+          <Header {...header} />
           <MainCard {...hero} />
-          <TimeLeft {...time} />
-        </Hero>
+        </div>
+        <TimeLeft {...time} />
+      </Hero>
+      <main className="home container">
         <Banner type="close" texts={banner1} />
-        <Votes />
+        <Votes persons={people} />
         <Banner type="withButton" texts={banner2} />
       </main>
-
-      <Footer {...footer} />
+      <div className="container">
+        <Footer {...footer} />
+      </div>
     </div>
   );
 }
-// title={title} label={label} menuItems={navItems}
+
 export default home;

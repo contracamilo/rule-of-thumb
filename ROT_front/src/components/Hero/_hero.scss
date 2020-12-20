@@ -1,0 +1,14 @@
+.hero {
+  padding-top: 30px;
+  position: relative;
+  z-index: 0;
+  margin-bottom: 33px;
+  &:after {
+    @include pseudo($top: 0, $left: 0, $z: -1);
+    width: 100%;
+    height: 20%;
+    opacity: 0.85;
+    pointer-events: none;
+    background: linear-gradient($gray, rgba(0, 0, 0, 0));
+  }
+}

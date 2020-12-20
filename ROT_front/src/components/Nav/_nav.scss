@@ -1,0 +1,30 @@
+.navigation {
+  padding: 0;
+
+  &__list {
+    display: flex;
+  }
+
+  &__search {
+    cursor: pointer;
+    padding-left: 48px;
+    svg {
+      height: 36px;
+      fill: white;
+    }
+  }
+
+  li {
+    padding: 0 27px;
+    a {
+      color: $white;
+      font-weight: 300;
+      font-size: $normal;
+      position: relative;
+      @include itemDecoration($white);
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}

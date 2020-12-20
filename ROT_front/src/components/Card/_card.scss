@@ -1,0 +1,162 @@
+.card {
+  width: 48%;
+  height: 549px;
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+  color: $white;
+
+  &__img-box {
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    figcaption {
+      font-size: 0;
+      text-indent: -20px;
+    }
+
+    &:before {
+      @include pseudo($bottom: 5%);
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(rgba(0, 0, 0, 0), $gray);
+    }
+  }
+
+  &__text {
+    padding: $upper-mg $side-mg * 2 $upper-mg $upper-mg;
+
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 0.01rem;
+      position: relative;
+    }
+
+    .green-badge,
+    .orange-badge {
+      &:before {
+        @include pseudo($left: -35px, $top: 6px);
+        width: 30px;
+        height: 30px;
+      }
+      &:after {
+        @include pseudo($left: -35px, $top: 6px);
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 60%;
+      }
+    }
+
+    .green-badge {
+      &:before {
+        background-color: $green;
+      }
+      &:after {
+        background-image: url('../../assets/images/mini-thumb.png');
+      }
+    }
+
+    .orange-badge {
+      &:before {
+        background-color: $yellow;
+      }
+      &:after {
+        background-image: url('../../assets/images/mini-thumb.png');
+      }
+    }
+
+    p {
+      font-weight: 300;
+    }
+
+    &--small-sub {
+      font-size: $x-small;
+      margin: 0;
+    }
+
+    strong {
+      font-size: $x-small;
+    }
+  }
+
+  &__vote-buttons {
+    padding: 0 $side-mg 0 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+
+    .thumb button {
+      height: 35px;
+      width: 35px;
+      cursor: pointer;
+      transition: 0.2s;
+
+      svg {
+        width: 20px;
+      }
+
+      &:hover {
+        opacity: 0.9;
+        border: 2px solid $white;
+      }
+    }
+
+    button {
+      margin-right: 0.7rem;
+      height: 100%;
+      z-index: 1;
+      position: relative;
+    }
+
+    &--outline {
+      background-color: transparent;
+      border: 1px solid $white;
+      font-size: $small;
+      padding: 0 2rem;
+      color: $white;
+      @include buttonDecoration($white, $gray);
+    }
+  }
+
+  &__buttons {
+    position: relative;
+    width: 100%;
+  }
+
+  &__content-box {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .progressBar__bar {
+    background-color: $yellow;
+    border-radius: 0px;
+    padding: 0px;
+  }
+
+  .progressBar__bar > div {
+    background-color: $green;
+    width: 50%;
+    height: 50px;
+    border-radius: 0px;
+  }
+
+  &:hover {
+    .card__img-box img {
+      width: 101%;
+      height: 101%;
+    }
+  }
+}

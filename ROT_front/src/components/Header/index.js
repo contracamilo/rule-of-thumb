@@ -13,9 +13,13 @@ import Search from '../Search';
 const Header = ({ title, label, navItems }) => {
   return (
     <header className="header">
-      <Link to={'/'}>{title}</Link>
-      <Nav aria={label} items={navItems} />
-      <Search />
+      <Link to={'/'}>
+        <h2>{title}</h2>
+      </Link>
+      <div className="header__nav">
+        <Nav aria={label} items={navItems} />
+        <Search />
+      </div>
     </header>
   );
 };

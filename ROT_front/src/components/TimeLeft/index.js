@@ -6,10 +6,10 @@ const TimeLeft = ({ text, number, time }) => {
       <div className="timeleft__text">
         <p>{text}</p>
       </div>
-      <div>
-        <p className="timeleft__date">
+      <div className="timeleft__date">
+        <p>
           <strong>{number}</strong>
-          {time}
+          {` ${time}`}
         </p>
       </div>
     </div>

@@ -4,7 +4,7 @@ export const texts = {
     label: 'rule of thumb',
     navItems: [
       { name: 'Past Trial', url: '/past-trials' },
-      { name: 'how it works', url: '/how-it-works' },
+      { name: 'How it works', url: '/how-it-works' },
       { name: 'Log In /Sign Ups', url: '/login' },
     ],
   },
@@ -30,8 +30,8 @@ export const texts = {
       { name: 'Contact US', url: '/login' },
     ],
     socialItems: [
-      { name: 'facebook', url: '/past-trials', imgUrl: '/facebook.png' },
-      { name: 'twitter', url: '/how-it-works', imgUrl: '/twitter.png' },
+      { name: 'facebook', url: '/past-trials', imgUrl: 'fbLogo' },
+      { name: 'twitter', url: '/how-it-works', imgUrl: 'twLogo' },
     ],
     text: 'Follow us',
   },

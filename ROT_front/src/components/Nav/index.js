@@ -14,7 +14,7 @@ const Nav = ({ aria, items, isIconList }) => {
         {(items || []) &&
           items.map((item, index) => (
             <li role="none" key={index} className="navigation__item">
-              <a role="menuitem" href={item.url || null} tabindex="0">
+              <a role="menuitem" href={item.url || null} tabIndex="0">
                 {isIconList && <img src={item.imgUrl} alt={item.name} />}
                 <span className={`navigation__text--${isIconList ? 'invisible' : ''}`}>
                   {item.name}
