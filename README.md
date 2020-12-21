@@ -1,9 +1,5 @@
 # Rule of Thumb
 
-React APP MERN stack
-
-# Rule of Thumb
-
 Rule of Thumb is a crowd sourced court of public opinion where anyone and everyone can speak out and speak freely. It's easy: You share your opinion, we analyze and put the data in a public report.
 
 [Visit the site](https://amazing-darwin-846e72.netlify.app/)
