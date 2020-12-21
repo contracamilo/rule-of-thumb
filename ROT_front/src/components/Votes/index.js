@@ -1,22 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useReducer } from 'react';
+import { PeopleContext } from '../../context/peopleContext';
 import Card from '../Card';
 
 /**
  * Ui component for user interaction.
- *
- * @param {object} persons array of objects with the person's information
  * @return {JSX} Wraperr for Card components
  */
-function Votes({ persons }) {
-  const { people } = persons;
+function Votes() {
+  const ctx = useContext(PeopleContext) || {};
+  const { initialState, likeReducer } = ctx;
+  const [people, dispatch] = useReducer(likeReducer, initialState);
+
+  const passDispatch = (id) => dispatch(id);
 
   return (
     <article role="contentinfo" aria-label="vote section" className="votes">
       <h2 className="votes__title-section">Votes</h2>
       <div className="votes__card-container">
         {(people || []).map((person, index) => (
-          <Card key={index} person={person} />
+          <Card key={index} person={person} dispatch={passDispatch} id={index} />
         ))}
       </div>
     </article>
@@ -24,11 +26,3 @@ function Votes({ persons }) {
 }
 
 export default Votes;
-
-Votes.propTypes = {
-  persons: PropTypes.array,
-};
-
-Votes.defaultProps = {
-  aria: [],
-};

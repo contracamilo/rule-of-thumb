@@ -9,21 +9,26 @@ import PropTypes from 'prop-types';
  * @param {object} props passed properties, check prop-types for details.
  * @return {JSX} Progress bar that compare two percentages.
  */
-const ProgressBar = ({ likePercentage, dislikePercentage }) => {
+const ProgressBar = ({ likePercentage = 0, dislikePercentage = 0 }) => {
+  const likes = likePercentage.toFixed(1);
+  const dislikes = dislikePercentage.toFixed(1);
+
+  const removeZero = (str) => str.replace('.0', '');
+
   return (
     <div className="progressBar">
       <div className="progressBar__button">
         <div className="progressBar__button--like">
           <ThumbUp />
-          <p>{`${likePercentage || ''}%`}</p>
+          <p>{removeZero(`${likes || ''}%`)}</p>
         </div>
         <div className="progressBar__button--dislike">
-          <p>{`${dislikePercentage || ''}%`}</p>
+          <p>{removeZero(`${dislikes || ''}%`)}</p>
           <ThumbDown />
         </div>
       </div>
       <div className="progressBar__bar">
-        <div className="progressBar__bar--inner"></div>
+        <div className="progressBar__bar--inner" style={{ width: `${likes}%` }}></div>
       </div>
     </div>
   );

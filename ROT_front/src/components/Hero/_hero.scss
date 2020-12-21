@@ -17,12 +17,13 @@
   }
 
   @include respond(tablet) {
-    background-size: 100%;
+    background-size: cover;
   }
 
   @include respond(mobile) {
     width: 100%;
     background-size: contain;
+    background-position: top center;
     margin-bottom: 0;
   }
 }

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * @param {object} props passed properties, check prop-types for details.
  * @return {JSX} Button component from bootstrap library.
  */
-const Btn = (props) => {
+const Button = (props) => {
   const { label, children } = props;
   return (
     <button type="button" {...props}>
@@ -16,9 +16,9 @@ const Btn = (props) => {
   );
 };
 
-export default Btn;
+export default Button;
 
-Btn.propTypes = {
+Button.propTypes = {
   active: PropTypes.bool,
   'aria-label': PropTypes.string,
   block: PropTypes.bool,
@@ -34,7 +34,7 @@ Btn.propTypes = {
   close: PropTypes.bool,
 };
 
-Btn.defaultProps = {
+Button.defaultProps = {
   color: 'secondary',
   tag: 'button',
 };

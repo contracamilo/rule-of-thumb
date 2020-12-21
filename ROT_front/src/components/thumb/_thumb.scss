@@ -8,6 +8,10 @@
     height: 81px;
     cursor: pointer;
 
+    &:disabled {
+      cursor: not-allowed;
+    }
+
     @include respond(tablet) {
       height: 51px;
     }
@@ -28,6 +32,12 @@
     button {
       background-color: rgba($yellow, 0.9);
       filter: contrast(100%);
+    }
+  }
+
+  &--active {
+    button {
+      border: 2px solid $white;
     }
   }
 }

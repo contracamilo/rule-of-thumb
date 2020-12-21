@@ -28,6 +28,13 @@
       font-size: $normal;
       position: relative;
       @include itemDecoration($white);
+
+      @include respond(mobile) {
+        span {
+          font-size: $x-small;
+          text-align: center;
+        }
+      }
     }
     &:last-child {
       padding-right: 0;

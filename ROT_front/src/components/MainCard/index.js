@@ -21,8 +21,8 @@ const MainCard = ({ preTitle, title, body, url, linkText, question }) => {
         <h3>{question}</h3>
       </div>
       <div className="main-card__buttons">
-        <Thumb like />
-        <Thumb color="orange" like={false} />
+        <Thumb active={false} like />
+        <Thumb active={false} color="orange" like={false} />
       </div>
     </section>
   );

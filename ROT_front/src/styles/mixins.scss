@@ -14,7 +14,7 @@
   }
 
   @if $breakpoint==tablet {
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
       @content;
     }
   }
@@ -71,6 +71,7 @@
       opacity: 1;
     }
   }
+  @content;
 }
 
 @mixin buttonDecoration($color: white, $txtColor: $gray) {
@@ -88,4 +89,6 @@
       width: 100%;
     }
   }
+
+  @content;
 }

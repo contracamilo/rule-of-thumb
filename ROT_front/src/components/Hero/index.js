@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Ui component for user interaction.
+ *
+ * @param {object} props passed properties, check prop-types for details.
+ * @return {JSX} is a wrapper with an background image
+ */
 const Hero = ({ imageUrl, description, children }) => {
-  console.log();
-
   const img = {
     backgroundImage: `url(${imageUrl})`,
   };

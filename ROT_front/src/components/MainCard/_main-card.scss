@@ -38,6 +38,7 @@
       width: 100%;
       transition: 0.2s;
       @include buttonDecoration(rgba(0, 0, 0, 0.1), $gray);
+      border: 0;
 
       &:hover {
         padding-bottom: 10px;

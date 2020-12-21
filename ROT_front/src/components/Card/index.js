@@ -1,21 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProgressBar from '../ProgressBar';
 import Thumb from '../thumb';
 import PropTypes from 'prop-types';
 import { FadeIn } from '../animations';
+import { calculatePercentages } from '../../utils/index';
+import Button from '../Button';
 
 /**
  * Ui component for user interaction.
  *
- * @param {object} person passed properties of the character taht will be rendered.
+ * @param {object} passed properties of the character taht will be rendered.
  * @return {JSX} Vore card component.
  */
-const Card = ({ person = {} }) => {
-  const { imgUrl, name, description, liked, time, category } = person;
+const Card = ({ person = {}, dispatch, id }) => {
+  const { imgUrl, name, description, time, category, likes, dislikes } = person;
+
+  const [liked, setliked] = useState('');
+  const [isSent, setIsSent] = useState(false);
+  const [lksPercetage, dislksPercentage] = calculatePercentages(likes, dislikes);
+
+  const swicthBadge = (numLikes) => (numLikes > 51 ? true : null);
+
+  const vote = () => {
+    switch (liked) {
+      case 'like':
+        dispatch({ type: 'LIKE', id });
+        break;
+      case 'dislike':
+        dispatch({ type: 'DISLIKE', id });
+        break;
+      default:
+        throw new Error();
+    }
+    setIsSent(true);
+    setliked('');
+  };
+
+  const voteType = (thumb) => setliked(thumb);
+
+  const closeFeedback = () => setIsSent(false);
+
+  setTimeout(() => {
+    setIsSent(false);
+  }, 4000);
 
   return (
     <FadeIn duration={1}>
       <section className="card">
+        {isSent && (
+          <div className="card__feedback">
+            <p>{`Thank you for voting for ${name}!`}</p>
+            <Button
+              onClick={closeFeedback}
+              className="card__vote-buttons--outline"
+              type="button"
+              aria-label="close button"
+            >
+              close
+            </Button>
+          </div>
+        )}
         <figure className="card__img-box">
           <img src={imgUrl} alt={name} />
           <figcaption>{description}</figcaption>
@@ -23,23 +67,41 @@ const Card = ({ person = {} }) => {
 
         <div className="card__content-box">
           <div className="card__text">
-            <h2 className={liked ? 'green-badge' : 'orange-badge'}>{name || null}</h2>
+            <h2 className={swicthBadge(lksPercetage) ? 'green-badge' : 'orange-badge'}>
+              {name || null}
+            </h2>
             <p className="card__text--small-sub">
               <strong>{time}</strong>
               {` in ${category}`}
             </p>
             <p>{description}</p>
             <div className="card__vote-buttons">
-              <Thumb like />
-              <Thumb color="orange" like={false} />
-              <button type="button" className="card__vote-buttons--outline">
+              <Thumb
+                active={liked === 'like'}
+                disabled={liked === 'dislike'}
+                like
+                action={() => voteType('like')}
+              />
+              <Thumb
+                active={liked === 'dislike'}
+                disabled={liked === 'like'}
+                color="orange"
+                like={false}
+                action={() => voteType('dislike')}
+              />
+              <Button
+                type="button"
+                disabled={isSent || liked === ''}
+                onClick={vote}
+                className="card__vote-buttons--outline"
+              >
                 Vote Now
-              </button>
+              </Button>
             </div>
           </div>
 
           <div className="card__buttons">
-            <ProgressBar likePercentage={70} dislikePercentage={40} />
+            <ProgressBar likePercentage={lksPercetage} dislikePercentage={dislksPercentage} />
           </div>
         </div>
       </section>

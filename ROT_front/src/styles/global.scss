@@ -32,6 +32,10 @@ button {
     border: 0;
     outline: none;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 a {
