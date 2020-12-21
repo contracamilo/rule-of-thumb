@@ -1,0 +1,248 @@
+.card {
+  width: 48%;
+  height: 549px;
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+  color: $white;
+  position: relative;
+
+  @include respond(tablet) {
+    height: 520px;
+  }
+
+  @include respond(mobile) {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  &__img-box {
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+
+    img {
+      width: 100%;
+      transition: 0.3s;
+
+      @include respond(mobile) {
+        width: 70%;
+        transform: translateX(-50px);
+      }
+
+      @include respond(tablet) {
+        width: auto;
+        transform: translateX(-50px);
+      }
+    }
+
+    figcaption {
+      font-size: 0;
+      text-indent: -20px;
+    }
+
+    &:before {
+      @include pseudo($bottom: 5%, $z: 1);
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(rgba(0, 0, 0, 0), $gray);
+    }
+  }
+
+  &__text {
+    padding: $upper-mg $side-mg * 2 $upper-mg $upper-mg;
+
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 0.01rem;
+      position: relative;
+    }
+
+    .green-badge,
+    .orange-badge {
+      &:before {
+        @include pseudo($left: -35px, $top: 6px);
+        width: 30px;
+        height: 30px;
+      }
+      &:after {
+        @include pseudo($left: -35px, $top: 6px);
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 60%;
+      }
+    }
+
+    .green-badge {
+      &:before {
+        background-color: $green;
+      }
+      &:after {
+        // background-image: url('../../assets/images/mini-thumb.png');
+      }
+    }
+
+    .orange-badge {
+      &:before {
+        background-color: $yellow;
+      }
+      &:after {
+        transform: rotate(180deg);
+        // background-image: url('../../assets/images/mini-thumb.png');
+      }
+    }
+
+    p {
+      font-weight: 300;
+    }
+
+    &--small-sub {
+      font-size: $x-small;
+      margin: 0;
+    }
+
+    strong {
+      font-size: $x-small;
+    }
+
+    @include respond(mobile) {
+      padding: $upper-mg $side-mg $upper-mg $upper-mg;
+    }
+  }
+
+  &__vote-buttons {
+    padding: 0 $side-mg 0 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+
+    .thumb button {
+      height: 35px;
+      width: 35px;
+      cursor: pointer;
+      transition: 0.2s;
+
+      svg {
+        width: 20px;
+      }
+
+      &:hover {
+        opacity: 0.9;
+        border: 2px solid $white;
+      }
+    }
+
+    button {
+      margin-right: 0.7rem;
+      height: 100%;
+      z-index: 1;
+      position: relative;
+    }
+
+    &--outline {
+      background-color: transparent;
+      border: 1px solid $white;
+      font-size: $small;
+      padding: 0 2rem;
+      color: $white;
+      transition: 0.3;
+      @include buttonDecoration($white, $gray) {
+        &:after {
+          @include respond(tablet) {
+            display: none;
+          }
+          @include respond(mobile) {
+            display: none;
+          }
+        }
+      }
+
+      &:disabled {
+        opacity: 0.6;
+      }
+
+      &:focus,
+      &:visited,
+      &:not(:focus) {
+        border: 1px solid $white;
+
+        @include respond(tablet) {
+          color: $white;
+        }
+
+        @include respond(mobile) {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    position: relative;
+    width: 100%;
+  }
+
+  &__content-box {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .progressBar__bar {
+    background-color: $yellow;
+    border-radius: 0px;
+    padding: 0px;
+  }
+
+  .progressBar__bar > div {
+    background-color: $green;
+    width: 50%;
+    height: 50px;
+    border-radius: 0px;
+  }
+
+  &:hover {
+    .card__img-box img {
+      width: 101%;
+      height: 101%;
+
+      @include respond(tablet) {
+        width: auto;
+        height: auto;
+      }
+
+      @include respond(phone) {
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
+  &__feedback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($gray, 0.9);
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    flex-direction: column;
+    transition: 0.3;
+
+    button {
+      position: relative;
+      height: 40px;
+    }
+  }
+}
