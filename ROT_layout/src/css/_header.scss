@@ -1,0 +1,49 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+	margin-bottom: 80px;
+	z-index: 2;
+
+	@include respond(tablet) {
+		margin-bottom: 38px;
+	}
+
+	@include respond(mobile) {
+		margin-bottom: 150px;
+	}
+
+	&__nav {
+		display: flex;
+		align-items: center;
+		align-content: center;
+	}
+
+	.navigation {
+		@include respond(mobile) {
+			display: none;
+		}
+	}
+
+	&__mobile-menu {
+		display: none;
+		@include respond(mobile) {
+			display: block;
+			color: $white;
+			font-weight: bold;
+			letter-spacing: 2px;
+			cursor: pointer;
+		}
+	}
+
+	h2 {
+		font-size: $h2;
+		color: $white;
+		font-weight: 400;
+
+		@include respond(tablet) {
+			font-size: 1.3rem;
+		}
+	}
+}
