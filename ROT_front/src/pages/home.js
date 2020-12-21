@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../components/Header';
 import { texts } from '../utils/globalText';
 import Hero from '../components/Hero';
@@ -9,9 +9,11 @@ import Banner from '../components/Banner';
 import Votes from '../components/Votes';
 import BgImage from '../assets/images/Pope.jpg';
 
-import { people } from '../utils/people';
+import { PeopleContext } from '../context/peopleContext';
 
-function home() {
+const Home = () => {
+  const people = useContext(PeopleContext);
+
   const { header, hero, time, footer, banner1, banner2 } = texts;
 
   return (
@@ -33,6 +35,6 @@ function home() {
       </div>
     </div>
   );
-}
+};
 
-export default home;
+export default Home;

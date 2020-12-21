@@ -9,11 +9,13 @@ import Card from '../Card';
  * @return {JSX} Wraperr for Card components
  */
 function Votes({ persons }) {
+  const { people } = persons;
+
   return (
     <article role="contentinfo" aria-label="vote section" className="votes">
       <h2 className="votes__title-section">Votes</h2>
       <div className="votes__card-container">
-        {(persons || []).map((person, index) => (
+        {(people || []).map((person, index) => (
           <Card key={index} person={person} />
         ))}
       </div>

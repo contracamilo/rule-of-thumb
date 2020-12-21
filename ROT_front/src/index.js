@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ProductContext from './context/productContext';
+import PeopleContext from './context/peopleContext';
 import Context from './context/authContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <Context.Provider>
-      <ProductContext.Provider>
+      <PeopleContext.Provider>
         <App />
-      </ProductContext.Provider>
+      </PeopleContext.Provider>
     </Context.Provider>
   </React.StrictMode>,
   document.getElementById('root')

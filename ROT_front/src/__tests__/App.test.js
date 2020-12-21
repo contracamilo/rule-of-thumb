@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import Context from '../context/authContext';
-import ProductContext from '../context/authContext';
-import PropTypes from 'prop-types';
+import PeopleContext from '../context/peopleContext';
 import App from '../App';
 
 describe('<App /> redern without problems', () => {
@@ -10,9 +9,9 @@ describe('<App /> redern without problems', () => {
 
   const app = render(
     <Context.Provider value={{ isAuth: false }}>
-      <ProductContext.Provider value={{ data: [] }}>
+      <PeopleContext.Provider value={{ data: [] }}>
         <App />
-      </ProductContext.Provider>
+      </PeopleContext.Provider>
     </Context.Provider>
   );
 

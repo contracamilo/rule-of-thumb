@@ -1,8 +1,9 @@
 import React, { createContext } from 'react';
 import { usePersonsAPI } from '../hooks/usePersonsAPI';
+import { people } from '../utils/people';
 
 // A New instance of React.createContext
-export const ProductContext = createContext();
+export const PeopleContext = createContext();
 
 /**
  * Function that configures the React.Provider configuration to resolve the state of the authentication around the app
@@ -11,20 +12,23 @@ export const ProductContext = createContext();
  * @returns {JSX.Elements} New setup for the Provider component
  */
 const Provider = ({ children }) => {
-  const [{ data, isLoading, isError }, doFetch] = usePersonsAPI('item');
+  // const [{ data, isLoading, isError }, doFetch] = usePersonsAPI('item');
 
   const value = {
+    /*
     data,
     isLoading,
     isError,
-    doFetch,
+    doFetch, */
+
+    people,
   };
 
-  return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
+  return <PeopleContext.Provider value={value}>{children}</PeopleContext.Provider>;
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   Provider,
-  Consumer: ProductContext.Consumer,
+  Consumer: PeopleContext.Consumer,
 };
