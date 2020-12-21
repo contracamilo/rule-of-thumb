@@ -1,0 +1,49 @@
+.progressBar {
+  width: 100%;
+  position: relative;
+  &__bar {
+    background-color: $green;
+    border-radius: 0px;
+    padding: 0px;
+    &--inner {
+      background-color: orange;
+      height: 20px;
+      border-radius: 0px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    height: 51px;
+    padding: 0 0.5rem;
+    &--like {
+      display: flex;
+      align-items: center;
+    }
+
+    &--dislike {
+      display: flex;
+      align-items: center;
+      align-content: center;
+    }
+  }
+
+  p {
+    font-size: 1.6rem;
+    margin: 0;
+    line-height: 2rem;
+    font-weight: 300;
+    padding: 0 0.5rem;
+    color: $white;
+  }
+
+  svg {
+    width: 30px;
+    fill: $white;
+  }
+}
