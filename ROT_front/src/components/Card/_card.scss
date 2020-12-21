@@ -84,7 +84,6 @@
         background-color: $green;
       }
       &:after {
-        background-image: url('../../assets/images/mini-thumb.png');
       }
     }
 
@@ -94,7 +93,6 @@
       }
       &:after {
         transform: rotate(180deg);
-        background-image: url('../../assets/images/mini-thumb.png');
       }
     }
 

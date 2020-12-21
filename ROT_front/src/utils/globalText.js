@@ -3,9 +3,9 @@ export const texts = {
     title: 'Rule of Thumb.',
     label: 'rule of thumb',
     navItems: [
-      { name: 'Past Trial', url: '/past-trials' },
-      { name: 'How it works', url: '/how-it-works' },
-      { name: 'Log In /Sign Ups', url: '/login' },
+      { name: 'Past Trial', url: '/' },
+      { name: 'How it works', url: '/' },
+      { name: 'Log In /Sign Ups', url: '/' },
     ],
   },
   hero: {
@@ -25,13 +25,13 @@ export const texts = {
   footer: {
     label: 'Footer',
     navItems: [
-      { name: 'Terms and conditions', url: '/past-trials' },
-      { name: 'Privacy Policy', url: '/how-it-works' },
-      { name: 'Contact US', url: '/login' },
+      { name: 'Terms and conditions', url: '/' },
+      { name: 'Privacy Policy', url: '/' },
+      { name: 'Contact US', url: '/' },
     ],
     socialItems: [
-      { name: 'facebook', url: '/past-trials', imgUrl: 'fbLogo' },
-      { name: 'twitter', url: '/how-it-works', imgUrl: 'twLogo' },
+      { name: 'facebook', url: '/', imgUrl: 'fbLogo' },
+      { name: 'twitter', url: '/', imgUrl: 'twLogo' },
     ],
     text: 'Follow us',
   },
