@@ -2,8 +2,7 @@ import { json, urlencoded } from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
-import itemRouter from './resources/item/item.router';
-import listRouter from './resources/list/list.router';
+import personRouter from './resources/person/person.router';
 import { notFound, developmentErrors, productionErrors } from './utils/errorHandler';
 
 const app = express();
@@ -15,13 +14,12 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.use('/api/item', itemRouter);
-app.use('/api/list', listRouter);
+app.use('/api/person', personRouter);
 
 // if 404
 app.use(notFound);
 
-// if another error is hitted
+// if another error is showed
 if (app.get('env') === 'development') {
   app.use(developmentErrors);
 }

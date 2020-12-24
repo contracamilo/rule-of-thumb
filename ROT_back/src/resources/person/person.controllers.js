@@ -1,4 +1,4 @@
 import { crudControllers } from '../../utils/crud';
-import Item from './item.model';
+import Item from './person.model';
 
 export default crudControllers(Item);
