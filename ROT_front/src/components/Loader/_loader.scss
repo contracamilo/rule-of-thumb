@@ -22,7 +22,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #fff;
+  background: rgba($light-gray, 0.6);
   animation: lds-grid 1.2s linear infinite;
 }
 .lds-grid div:nth-child(1) {

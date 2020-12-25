@@ -1,6 +1,5 @@
-import React, { createContext, useState } from 'react';
-// import { usePersonsAPI } from '../hooks/usePersonsAPI';
-import { people } from '../utils/people';
+import React, { createContext } from 'react';
+import usePersonsAPI from '../hooks/usePersonsAPI';
 
 // A New instance of React.createContext
 export const PeopleContext = createContext();
@@ -12,37 +11,23 @@ export const PeopleContext = createContext();
  * @returns {JSX.Elements} New setup for the Provider component
  */
 const Provider = ({ children }) => {
-  // const [{ data, isLoading, isError }, doFetch] = usePersonsAPI('item');
-  const [storedInfo] = useState(() => {
-    return window.sessionStorage.getItem('persons');
-  });
+  const [{ data, isLoading, isError }, doFetch] = usePersonsAPI('person');
 
-  let loadedData = JSON.parse(storedInfo);
-
-  const initialState = loadedData || [...people];
-
-  const storeInfo = (info) => {
-    const data = JSON.stringify(info);
-    window.sessionStorage.setItem('persons', data);
-  };
-
-  //  window.sessionStorage.removeItem('persons');
+  const initialState = data;
 
   const likeReducer = (state, action) => {
     const { id } = action;
-    let newState = state;
+    let newState = state.data;
 
     switch (action.type) {
       case 'LIKE': {
-        newState[id].likes += 1;
-        storeInfo([...newState]);
-        return [...newState];
+        newState[id].meta.likes += 1;
+        return { data: newState };
       }
 
       case 'DISLIKE': {
-        newState[id].dislikes += 1;
-        storeInfo([...newState]);
-        return [...newState];
+        newState[id].meta.dislikes += 1;
+        return { data: newState };
       }
       default:
         throw new Error();
@@ -50,11 +35,9 @@ const Provider = ({ children }) => {
   };
 
   const value = {
-    /*
-    data,
     isLoading,
     isError,
-    doFetch, */
+    doFetch,
     likeReducer,
     initialState,
   };

@@ -11,6 +11,7 @@
     "fetch-mock": "^9.11.0",
     "gsap": "^3.5.1",
     "husky": "^4.3.5",
+    "javascript-time-ago": "^2.3.3",
     "jest-mock-axios": "^4.2.1",
     "lint-staged": "^10.5.3",
     "node-sass": "^4.14.1",

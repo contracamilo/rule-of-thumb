@@ -4,16 +4,18 @@ import Thumb from '../thumb';
 import PropTypes from 'prop-types';
 import { FadeIn } from '../animations';
 import { calculatePercentages } from '../../utils/index';
+import { timeCalc } from '../../utils/index';
 import Button from '../Button';
 
 /**
  * Ui component for user interaction.
  *
  * @param {object} passed properties of the character taht will be rendered.
- * @return {JSX} Vore card component.
+ * @return {JSX} Vote card component.
  */
 const Card = ({ person = {}, dispatch, id }) => {
-  const { imgUrl, name, description, time, category, likes, dislikes } = person;
+  const { imgUrl, name, description, createdAt, category, meta } = person;
+  const { likes, dislikes } = meta;
 
   const [liked, setliked] = useState('');
   const [isSent, setIsSent] = useState(false);
@@ -71,10 +73,10 @@ const Card = ({ person = {}, dispatch, id }) => {
               {name || null}
             </h2>
             <p className="card__text--small-sub">
-              <strong>{time}</strong>
+              <strong>{timeCalc(createdAt)}</strong>
               {` in ${category}`}
             </p>
-            <p>{description}</p>
+            <p className="card__text--body">{description}</p>
             <div className="card__vote-buttons">
               <Thumb
                 active={liked === 'like'}

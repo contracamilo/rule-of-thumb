@@ -9,6 +9,14 @@
     }
   }
 
+  &__loader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 1rem;
+  }
+
   &__card-container {
     display: flex;
     flex-wrap: wrap;
