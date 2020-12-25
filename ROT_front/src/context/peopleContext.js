@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import usePersonsAPI from '../hooks/usePersonsAPI';
+import useManageEntries from '../hooks/useManageEntries';
 
 // A New instance of React.createContext
 export const PeopleContext = createContext();
@@ -40,6 +41,7 @@ const Provider = ({ children }) => {
     doFetch,
     likeReducer,
     initialState,
+    useManageEntries,
   };
 
   return <PeopleContext.Provider value={value}>{children}</PeopleContext.Provider>;

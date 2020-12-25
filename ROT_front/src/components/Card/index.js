@@ -10,7 +10,7 @@ import Button from '../Button';
 /**
  * Ui component for user interaction.
  *
- * @param {object} passed properties of the character taht will be rendered.
+ * @param {object} passed properties of the character that will be rendered.
  * @return {JSX} Vote card component.
  */
 const Card = ({ person = {}, dispatch, id }) => {

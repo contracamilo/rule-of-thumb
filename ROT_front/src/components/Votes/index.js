@@ -9,11 +9,30 @@ import Loader from '../Loader';
  */
 function Votes() {
   const ctx = useContext(PeopleContext) || {};
-  const { initialState, likeReducer, isLoading } = ctx;
+  const { initialState, likeReducer, isLoading, useManageEntries } = ctx;
   const [people, dispatch] = useReducer(likeReducer, initialState);
   const passDispatch = (id) => dispatch(id);
   const [peopleState] = useState(people.data);
 
+  /* post and edit service
+  const serviceConfig = {
+    route: 'person',
+    header: {},
+    payload: {
+      name: 'Diomedez Diaz',
+      imgUrl: 'https://i.imgur.com/ns2DBxH.jpg',
+      category: 'entertainment',
+      description: 'Colombian Singer',
+      meta: {
+        likes: 85,
+        dislikes: 15,
+      },
+    },
+    id: '5fe648556c519678ca42ae5b',
+  };
+  const [data, loading, isError, createEntry] = useManageEntries({ ...serviceConfig });
+  console.log({ ...data }, loading, isError);
+ */
   return (
     <article role="contentinfo" aria-label="vote section" className="votes">
       <h2 className="votes__title-section">Votes</h2>
@@ -26,6 +45,7 @@ function Votes() {
           {(peopleState || []).map((person, index) => (
             <Card key={index} person={person} dispatch={passDispatch} id={index} />
           ))}
+          {/* <button onClick={() => createEntry()}>damm</button> */}
         </div>
       )}
     </article>
