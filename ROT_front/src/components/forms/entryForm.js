@@ -2,14 +2,14 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Formik, Field, Form } from 'formik';
 import { PeopleContext } from '../../context/peopleContext';
 
-const EntryForm = ({ id = null }) => {
+const EntryForm = ({ id = null, title }) => {
   const [formValues, setFormValues] = useState({});
   const context = useContext(PeopleContext) || {};
   const [isDataReady, setIsDataReady] = useState(false);
   const { useManageEntries } = context;
   const categories = ['entertainment', 'sports', 'politics', 'business', 'social media', 'science'];
 
-  const setConfig = (values) => {
+  const setConfig = (values = {}) => {
     const { name, imgUrl, description, category, likes, dislikes } = values;
     const headers = {};
 
@@ -33,7 +33,7 @@ const EntryForm = ({ id = null }) => {
     }
   };
 
-  const [data, loading, isError, createEntry] = useManageEntries(formValues);
+  const [, , , createEntry] = useManageEntries(formValues);
 
   useEffect(() => {
     if (isDataReady) {
@@ -44,7 +44,7 @@ const EntryForm = ({ id = null }) => {
 
   return (
     <div className="form">
-      <h2>Contact Us</h2>
+      <h2>{title}</h2>
       <Formik
         initialValues={{
           name: '',
@@ -73,7 +73,9 @@ const EntryForm = ({ id = null }) => {
               <Field name="dislikes" type="number" placeholder="dislikes" />
             </>
           )}
-          <button type="submit">Submit</button>
+          <button className="card__vote-buttons--outline" type="submit">
+            Submit
+          </button>
         </Form>
       </Formik>
     </div>

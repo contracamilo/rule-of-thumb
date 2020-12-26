@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ProgressBar from '../ProgressBar';
 import Thumb from '../thumb';
 import PropTypes from 'prop-types';
@@ -6,6 +6,7 @@ import { FadeIn } from '../animations';
 import { calculatePercentages } from '../../utils/index';
 import { timeCalc } from '../../utils/index';
 import Button from '../Button';
+import { PeopleContext } from '../../context/peopleContext';
 
 /**
  * Ui component for user interaction.
@@ -13,38 +14,70 @@ import Button from '../Button';
  * @param {object} passed properties of the character that will be rendered.
  * @return {JSX} Vote card component.
  */
-const Card = ({ person = {}, dispatch, id }) => {
-  const { imgUrl, name, description, createdAt, category, meta } = person;
+const Card = ({ person = {}, dispatch, personKey }) => {
+  const { imgUrl, name, description, createdAt, category, meta, _id } = person;
   const { likes, dislikes } = meta;
 
-  const [liked, setliked] = useState('');
+  const context = useContext(PeopleContext) || {};
+  const { useManageEntries } = context;
+  const [liked, setLiked] = useState('');
+  const [updatedValues, setUpdatedValues] = useState('');
   const [isSent, setIsSent] = useState(false);
-  const [lksPercetage, dislksPercentage] = calculatePercentages(likes, dislikes);
+  const [lksPercentage, dislksPercentage] = calculatePercentages(likes, dislikes);
+  const [isEdited, setIsEdited] = useState(false);
 
-  const swicthBadge = (numLikes) => (numLikes > 51 ? true : null);
+  // TODO: error management
+  const [, , , editEntry] = useManageEntries(updatedValues);
+
+  const switchBadge = (numLikes) => (numLikes > 51 ? true : null);
 
   const vote = () => {
     switch (liked) {
       case 'like':
-        dispatch({ type: 'LIKE', id });
+        dispatch({ type: 'LIKE', id: personKey });
         break;
       case 'dislike':
-        dispatch({ type: 'DISLIKE', id });
+        dispatch({ type: 'DISLIKE', id: personKey });
         break;
       default:
         throw new Error();
     }
     setIsSent(true);
-    setliked('');
+    setLiked('');
+    recordLikes(_id);
   };
 
-  const voteType = (thumb) => setliked(thumb);
+  const voteType = (thumb) => setLiked(thumb);
 
   const closeFeedback = () => setIsSent(false);
 
   setTimeout(() => {
     setIsSent(false);
   }, 4000);
+
+  const recordLikes = (id) => {
+    console.log(updatedValues, isEdited);
+    const headers = {};
+    const payload = {
+      imgUrl,
+      name,
+      description,
+      createdAt,
+      category,
+      meta,
+    };
+
+    setUpdatedValues({ payload, headers, id });
+    setIsEdited(true);
+  };
+
+  useEffect(() => {
+    if (isEdited) {
+      editEntry();
+      console.log('I sended');
+      setIsEdited(false);
+    }
+  }, [editEntry, isEdited, updatedValues]);
 
   return (
     <FadeIn duration={1}>
@@ -68,7 +101,7 @@ const Card = ({ person = {}, dispatch, id }) => {
 
         <div className="card__content-box">
           <div className="card__text">
-            <h2 className={swicthBadge(lksPercetage) ? 'green-badge' : 'orange-badge'}>
+            <h2 className={switchBadge(lksPercentage) ? 'green-badge' : 'orange-badge'}>
               {name || null}
             </h2>
             <p className="card__text--small-sub">
@@ -102,7 +135,7 @@ const Card = ({ person = {}, dispatch, id }) => {
           </div>
 
           <div className="card__buttons">
-            <ProgressBar likePercentage={lksPercetage} dislikePercentage={dislksPercentage} />
+            <ProgressBar likePercentage={lksPercentage} dislikePercentage={dislksPercentage} />
           </div>
         </div>
       </section>

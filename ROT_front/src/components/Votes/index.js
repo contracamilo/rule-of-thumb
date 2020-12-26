@@ -1,4 +1,4 @@
-import React, { useState, useContext, useReducer } from 'react';
+import React, { useState, useContext, useReducer, useEffect } from 'react';
 import { PeopleContext } from '../../context/peopleContext';
 import Card from '../Card';
 import Loader from '../Loader';
@@ -8,31 +8,20 @@ import Loader from '../Loader';
  * @return {JSX} Wrapper for Card components
  */
 function Votes() {
-  const ctx = useContext(PeopleContext) || {};
-  const { initialState, likeReducer, isLoading, useManageEntries } = ctx;
+  const ctx = useContext(PeopleContext);
+  const { initialState, likeReducer, isLoading } = ctx;
   const [people, dispatch] = useReducer(likeReducer, initialState);
   const passDispatch = (id) => dispatch(id);
-  const [peopleState] = useState(people.data);
+  const [peopleState, setPeopleState] = useState(people.data);
 
-  /* post and edit service
-  const serviceConfig = {
-    route: 'person',
-    header: {},
-    payload: {
-      name: 'Diomedez Diaz',
-      imgUrl: 'https://i.imgur.com/ns2DBxH.jpg',
-      category: 'entertainment',
-      description: 'Colombian Singer',
-      meta: {
-        likes: 85,
-        dislikes: 15,
-      },
-    },
-    id: '5fe648556c519678ca42ae5b',
-  };
-  const [data, loading, isError, createEntry] = useManageEntries({ ...serviceConfig });
-  console.log({ ...data }, loading, isError);
- */
+  console.log(isLoading, peopleState);
+
+  useEffect(() => {
+    if (isLoading) {
+      setPeopleState(people.data);
+    }
+  }, [isLoading, people.data]);
+
   return (
     <article role="contentinfo" aria-label="vote section" className="votes">
       <h2 className="votes__title-section">Votes</h2>
@@ -43,7 +32,7 @@ function Votes() {
       ) : (
         <div className="votes__card-container">
           {(peopleState || []).map((person, index) => (
-            <Card key={index} person={person} dispatch={passDispatch} id={index} />
+            <Card key={index} person={person} dispatch={passDispatch} personKey={index} />
           ))}
         </div>
       )}

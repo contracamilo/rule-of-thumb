@@ -8,16 +8,12 @@ if (NODE_ENV !== 'development') {
   apiUrl = process.env.REACT_APP_PROD_API_URL;
 }
 
-const useManageEntries = ({ payload, headers, id }) => {
-  console.log(payload, headers, id);
-
-  const entryId = id ? `${id}` : '';
+const useManageEntries = ({ payload, headers, id = '' }) => {
   const [data, setData] = useState({ data: [] });
-  const [url] = useState(`${apiUrl}person/${entryId}`);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  console.log(url);
+  let url = `${apiUrl}person/${id}`;
 
   const callAPI = useCallback(async () => {
     setIsError(false);

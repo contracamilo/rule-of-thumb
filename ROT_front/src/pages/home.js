@@ -13,7 +13,7 @@ import EntryForm from '../components/forms/entryForm';
 
 const Home = () => {
   const addNewCharacter = useRef(null);
-  const { header, hero, time, footer, banner1, banner2 } = texts;
+  const { header, hero, time, footer, banner1, banner2, home } = texts;
 
   return (
     <div className="home">
@@ -33,7 +33,7 @@ const Home = () => {
         <Footer {...footer} />
       </div>
       <Modal ref={addNewCharacter}>
-        <EntryForm />
+        <EntryForm title={home.modalTitle} />
       </Modal>
     </div>
   );

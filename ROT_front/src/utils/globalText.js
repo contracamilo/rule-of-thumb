@@ -1,4 +1,7 @@
 export const texts = {
+  home: {
+    modalTitle: 'Add a new person',
+  },
   header: {
     title: 'Rule of Thumb.',
     label: 'rule of thumb',
