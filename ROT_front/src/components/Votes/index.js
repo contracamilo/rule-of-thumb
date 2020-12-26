@@ -45,7 +45,6 @@ function Votes() {
           {(peopleState || []).map((person, index) => (
             <Card key={index} person={person} dispatch={passDispatch} id={index} />
           ))}
-          {/* <button onClick={() => createEntry()}>damm</button> */}
         </div>
       )}
     </article>

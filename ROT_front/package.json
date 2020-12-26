@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.5.0",
     "axios": "^0.21.0",
     "fetch-mock": "^9.11.0",
+    "formik": "^2.2.6",
     "gsap": "^3.5.1",
     "husky": "^4.3.5",
     "javascript-time-ago": "^2.3.3",

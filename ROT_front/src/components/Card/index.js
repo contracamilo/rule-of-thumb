@@ -62,9 +62,8 @@ const Card = ({ person = {}, dispatch, id }) => {
             </Button>
           </div>
         )}
-        <figure className="card__img-box">
-          <img src={imgUrl} alt={name} />
-          <figcaption>{description}</figcaption>
+        <figure className="card__img-box" style={{ backgroundImage: `url(${imgUrl})` }}>
+          <figcaption>{`${name} ${description}`}</figcaption>
         </figure>
 
         <div className="card__content-box">
