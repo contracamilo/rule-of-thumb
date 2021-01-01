@@ -26,11 +26,11 @@ const EntryForm = ({ id = null, title }) => {
 
     if (id) {
       setFormValues({ headers, payload: body, id });
-      setIsDataReady(true);
     } else {
       setFormValues({ headers, payload: body });
-      setIsDataReady(true);
     }
+
+    setIsDataReady(true);
   };
 
   const [, , , createEntry] = useManageEntries(formValues);
