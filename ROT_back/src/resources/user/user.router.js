@@ -1,21 +1,21 @@
 import { Router } from 'express';
 import { catchErrors } from '../../utils/errorHandler';
 import controllers from './user.controller';
-import { tokenVerify } from '../../middlewares/auth';
+import { tokenVerify, adminRoleVerify } from '../../middlewares/auth';
 
 const router = Router();
 
 // api/user
 router
   .route('/')
-  .all(tokenVerify)
+  .all([tokenVerify, adminRoleVerify])
   .post(catchErrors(controllers.createOneUser))
   .get(catchErrors(controllers.getMany));
 
 // api/user/:id
 router
   .route('/:id')
-  .all(tokenVerify)
+  .all([tokenVerify, adminRoleVerify])
   .get(catchErrors(controllers.getOne))
   .post(catchErrors(controllers.updateOne))
   .delete(catchErrors(controllers.removeOne));
