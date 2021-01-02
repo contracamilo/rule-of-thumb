@@ -17,6 +17,10 @@ const itemSchema = new mongoose.Schema(
     },
     imgUrl: String,
     description: String,
+    createdBy: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'user',
+    },
     meta: {
       likes: Number,
       dislikes: Number,

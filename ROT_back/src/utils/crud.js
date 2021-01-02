@@ -69,14 +69,14 @@ export const removeOne = model => async (req, res) => {
 };
 
 export const createOneUser = model => async (req, res) => {
-  let { body } = req;
+  let { body, user } = req;
 
-  let user = new model({
+  let User = new model({
     ...body,
     password: hashSync(`${body.password}`, 10),
   });
 
-  user.save((err, dbUser) => {
+  User.save((err, dbUser) => {
     if (err) {
       res.status(400).json({
         ok: false,
@@ -87,6 +87,7 @@ export const createOneUser = model => async (req, res) => {
     res.json({
       ok: true,
       user: dbUser,
+      createdBy: user._id,
     });
   });
 };

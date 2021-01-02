@@ -8,8 +8,8 @@ const router = Router();
 // api/user
 router
   .route('/')
-  .post(catchErrors(controllers.createOneUser))
   .all(tokenVerify)
+  .post(catchErrors(controllers.createOneUser))
   .get(catchErrors(controllers.getMany));
 
 // api/user/:id
