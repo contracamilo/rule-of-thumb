@@ -1,3 +1,5 @@
+import { hashSync } from 'bcrypt';
+
 const getNotFoundError = () => {
   const notFoundError = new Error(`Data not found`);
   notFoundError.status = 404;
@@ -66,10 +68,34 @@ export const removeOne = model => async (req, res) => {
   return res.status(200).json({ data: removed });
 };
 
+export const createOneUser = model => async (req, res) => {
+  let { body } = req;
+
+  let user = new model({
+    ...body,
+    password: hashSync(`${body.password}`, 10),
+  });
+
+  user.save((err, dbUser) => {
+    if (err) {
+      res.status(400).json({
+        ok: false,
+        err,
+      });
+    }
+
+    res.json({
+      ok: true,
+      user: dbUser,
+    });
+  });
+};
+
 export const crudControllers = model => ({
   removeOne: removeOne(model),
   updateOne: updateOne(model),
   getMany: getMany(model),
   getOne: getOne(model),
   createOne: createOne(model),
+  createOneUser: createOneUser(model),
 });

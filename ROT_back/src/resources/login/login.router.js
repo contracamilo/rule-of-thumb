@@ -2,8 +2,10 @@ import { Router } from 'express';
 import User from '../user/user.model';
 import { compareSync } from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
-const { AUTH_API_SEED, AUTH_EXP_DATE } = process.env;
+dotenv.config();
+const { AUTH_API_SEED } = process.env;
 
 const router = Router();
 
@@ -45,7 +47,7 @@ router.route('/').post((req, res) => {
         user: dbUser,
       },
       AUTH_API_SEED,
-      { expiresIn: AUTH_EXP_DATE }
+      { expiresIn: 60 * 60 * 24 * 30 }
     );
 
     res.json({
