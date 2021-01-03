@@ -11,7 +11,7 @@ const EntryForm = ({ id = null, title }) => {
 
   const setConfig = (values = {}) => {
     const { name, imgUrl, description, category, likes, dislikes } = values;
-    const headers = {};
+    const headers = { 'Access-Control-Allow-Origin': '*' };
 
     const body = {
       name,
@@ -24,10 +24,16 @@ const EntryForm = ({ id = null, title }) => {
       },
     };
 
+    const requestParams = {
+      headers,
+      payload: body,
+      route: 'person',
+    };
+
     if (id) {
-      setFormValues({ headers, payload: body, id });
+      setFormValues({ ...requestParams, id });
     } else {
-      setFormValues({ headers, payload: body });
+      setFormValues({ ...requestParams });
     }
 
     setIsDataReady(true);

@@ -9,18 +9,18 @@ import Loader from '../Loader';
  */
 function Votes() {
   const ctx = useContext(PeopleContext);
-  const { initialState, likeReducer, isLoading } = ctx;
+  const { data, initialState, likeReducer, isLoading } = ctx;
   const [people, dispatch] = useReducer(likeReducer, initialState);
   const passDispatch = (id) => dispatch(id);
   const [peopleState, setPeopleState] = useState(people.data);
 
-  console.log(isLoading, peopleState);
-
   useEffect(() => {
-    if (isLoading) {
+    if (people.data) {
       setPeopleState(people.data);
+    } else {
+      setPeopleState(data.data);
     }
-  }, [isLoading, people.data]);
+  }, [data.data, isLoading, people.data]);
 
   return (
     <article role="contentinfo" aria-label="vote section" className="votes">

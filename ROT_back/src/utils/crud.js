@@ -84,10 +84,17 @@ export const createOneUser = model => async (req, res) => {
       });
     }
 
+    if (user) {
+      return res.json({
+        ok: true,
+        user: dbUser,
+        createdBy: user._id,
+      });
+    }
+
     res.json({
       ok: true,
       user: dbUser,
-      createdBy: user._id,
     });
   });
 };

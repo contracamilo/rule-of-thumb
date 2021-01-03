@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect } from 'react';
 import usePersonsAPI from '../hooks/usePersonsAPI';
 import useManageEntries from '../hooks/useManageEntries';
 
@@ -13,6 +13,10 @@ export const PeopleContext = createContext();
  */
 const Provider = ({ children }) => {
   const [{ data, isLoading, isError }, doFetch] = usePersonsAPI('person');
+
+  useEffect(() => {
+    doFetch(data);
+  }, [data, doFetch]);
 
   const initialState = data;
 
@@ -36,6 +40,7 @@ const Provider = ({ children }) => {
   };
 
   const value = {
+    data,
     isLoading,
     isError,
     doFetch,

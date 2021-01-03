@@ -11,7 +11,12 @@ const app = express();
 
 app.disable('x-powered-by');
 
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));

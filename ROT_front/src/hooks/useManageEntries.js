@@ -8,12 +8,16 @@ if (NODE_ENV !== 'development') {
   apiUrl = process.env.REACT_APP_PROD_API_URL;
 }
 
-const useManageEntries = ({ payload, headers, id = '' }) => {
+const useManageEntries = ({ payload, headers, route, id = '' }) => {
   const [data, setData] = useState({ data: [] });
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  let url = `${apiUrl}person/${id}`;
+  let url = `${apiUrl}${route}`;
+
+  if (id !== '') {
+    url = `${apiUrl}${route}/${id}`;
+  }
 
   const callAPI = useCallback(async () => {
     setIsError(false);

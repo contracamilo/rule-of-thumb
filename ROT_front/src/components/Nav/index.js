@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * @param {object} props passed properties, check prop-types for details.
  * @return {JSX} Header ui component.
  */
-const Nav = ({ aria, items }) => {
+const Nav = ({ aria, items, additionalAction, children }) => {
   return (
     <nav aria-label={aria} className="navigation">
       <ul aria-label={aria} role="menubar" className="navigation__list">
@@ -19,6 +19,11 @@ const Nav = ({ aria, items }) => {
               </a>
             </li>
           ))}
+        {additionalAction && (
+          <li role="none" key={items.length} className="navigation__item">
+            {children}
+          </li>
+        )}
       </ul>
     </nav>
   );
