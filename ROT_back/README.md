@@ -1,6 +1,6 @@
 # Rule of thumb Back-end
 
-Deployed Version: [Heroku](https://prod-rot-api.herokuapp.com/api/person)
+API Deployed Version: [Heroku](https://prod-rot-api.herokuapp.com/api/person)
 
 Don´t forget install mongoDB and create a local instance.
 
