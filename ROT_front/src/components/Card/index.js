@@ -7,6 +7,7 @@ import { calculatePercentages } from '../../utils/index';
 import { timeCalc } from '../../utils/index';
 import Button from '../Button';
 import { PeopleContext } from '../../context/peopleContext';
+import dummyImage from '../../assets/images/user.png';
 
 /**
  * Ui component for user interaction.
@@ -95,7 +96,10 @@ const Card = ({ person = {}, dispatch, personKey }) => {
             </Button>
           </div>
         )}
-        <figure className="card__img-box" style={{ backgroundImage: `url(${imgUrl})` }}>
+        <figure
+          className="card__img-box"
+          style={{ backgroundImage: `url(${imgUrl || dummyImage})` }}
+        >
           <figcaption>{`${name} ${description}`}</figcaption>
         </figure>
 

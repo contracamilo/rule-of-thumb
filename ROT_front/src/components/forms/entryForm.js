@@ -1,17 +1,21 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Formik, Field, Form } from 'formik';
+import { Context } from '../../context/authContext';
 import { PeopleContext } from '../../context/peopleContext';
 
 const EntryForm = ({ id = null, title }) => {
   const [formValues, setFormValues] = useState({});
   const context = useContext(PeopleContext) || {};
   const [isDataReady, setIsDataReady] = useState(false);
+  const authContext = useContext(Context);
+
   const { useManageEntries } = context;
+  const { key } = authContext;
   const categories = ['entertainment', 'sports', 'politics', 'business', 'social media', 'science'];
 
   const setConfig = (values = {}) => {
     const { name, imgUrl, description, category, likes, dislikes } = values;
-    const headers = { 'Access-Control-Allow-Origin': '*' };
+    const headers = { 'Access-Control-Allow-Origin': '*', Authorization: key };
 
     const body = {
       name,

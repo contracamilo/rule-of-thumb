@@ -13,6 +13,7 @@ import EntryForm from '../components/forms/entryForm';
 
 const Home = () => {
   const addNewCharacter = useRef(null);
+
   const { header, hero, time, footer, banner1, banner2, home } = texts;
 
   return (

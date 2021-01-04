@@ -8,7 +8,6 @@ export const texts = {
     navItems: [
       { name: 'Past Trial', url: '/' },
       { name: 'How it works', url: '/' },
-      { name: 'Log In /Sign Ups', url: '/' },
     ],
   },
   hero: {
